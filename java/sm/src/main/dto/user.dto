@@ -1,0 +1,98 @@
+export org.napbad.scoremanager.model.entity.User
+    -> package org.napbad.scoremanager.model.dto.user
+
+input unsafe UserRegisterInput {
+    id
+    name
+    gender
+    email
+    identifier!
+    password!
+
+    userRole!
+    captcha: String
+}
+
+UserForVerify {
+    email
+}
+
+input unsafe UserForLogin {
+    identifier!
+    password!
+}
+
+UserForUpdate {
+    id
+    name
+    gender
+    email
+    identifier
+    password
+
+    captcha: String
+}
+
+UserInputDelete {
+    id
+    captcha: String
+}
+
+UserInfo_student {
+    id
+    name
+    gender
+    email
+    identifier
+
+    classes {
+        id
+        classId
+        course {
+            courseCode
+            courseName
+            courseId
+            id
+        }
+    }
+}
+
+UserLoginRes {
+    id
+    name
+    gender
+    email
+    identifier
+
+    userRole
+
+    token: String
+}
+
+specification UserSpecification {
+    id
+    like(name)
+    gender
+    email
+    identifier
+
+    userRole
+
+    classes {
+        id
+        classId
+        course {
+            courseCode
+            courseName
+            courseId
+            id
+        }
+    }
+}
+
+input UserClassRelation {
+    id
+    classes {
+        id
+    }
+}
