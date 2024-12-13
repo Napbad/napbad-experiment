@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'org.napbad.sso'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '5.11.0-M2'
+}
+
+sourceCompatibility = '21'
+targetCompatibility = '21'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    compileOnly('jakarta.platform:jakarta.jakartaee-api:11.0.0-M3')
+    compileOnly('jakarta.mvc:jakarta.mvc-api:2.1.0')
+    implementation('org.hibernate:hibernate-core:7.0.0.Alpha3')
+    implementation('org.glassfish.jaxb:jaxb-runtime:4.0.5')
+    implementation('org.hibernate.validator:hibernate-validator:8.0.1.Final')
+    implementation 'com.mysql:mysql-connector-j:9.1.0'
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+}
+
+test {
+    useJUnitPlatform()
+}
