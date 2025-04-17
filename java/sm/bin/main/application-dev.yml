@@ -1,0 +1,58 @@
+# 配置Spring数据源
+sm:
+    datasource:
+        # MySQL驱动类名，以MySQL 8为例
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        # 数据库连接URL，假设本地MySQL数据库，数据库名为sm，用户名和密码都是root，端口3306
+        url: jdbc:mysql://ip:3306/sm
+        # 数据库用户名
+        username: root
+        # 数据库密码
+        password:
+        # 数据源类型，使用Druid连接池，这里需要确保项目中已引入Druid相关依赖
+        type: com.alibaba.druid.pool.DruidDataSource
+
+    # Redis配置
+    data:
+        redis:
+            # Redis连接地址
+            host: localhost
+            # Redis端口
+            port: 6379
+            # 默认数据库索引
+            database: 0
+            # 连接超时时间，单位毫秒，这里设置为5000毫秒（5秒）
+            connect-timeout: 5000
+            # 读取操作超时时间，单位毫秒，设置为10000毫秒（10秒）
+            timeout: 10000
+            lettuce:
+                # 连接池配置
+                pool:
+                    # 最小空闲连接数
+                    min-idle: 5
+                    # 最大空闲连接数
+                    max-idle: 10
+                    # 最大活动连接数
+                    max-active: 20
+                    # 从连接池获取连接的最大超时时间，单位毫秒，设置为3000毫秒（3秒）
+                    max-wait: 3000
+    application:
+        name: service-sm
+
+    threads:
+        virtual:
+            enabled: true
+
+    # 服务器配置
+    server:
+        port: 8080
+
+    key:
+        name: 
+        key: 
+        secret: 
+
+    jwt:
+        secretKey: 
+        ttl: 
+        tokenName: 

@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "*.ndjson": "jsonl",
+        "*.dbclient-js": "javascript",
+        "*.dap": "dap",
+        "algorithm": "cpp",
+        "cmath": "cpp",
+        "complex": "cpp"
+    }
+}
